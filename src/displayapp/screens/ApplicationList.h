@@ -11,6 +11,7 @@
 #include "displayapp/screens/Symbols.h"
 #include "displayapp/screens/Tile.h"
 #include "displayapp/screens/Navigation.h"
+#include "touchhandler/TouchHandler.h"
 
 namespace Pinetime {
   namespace Applications {
@@ -22,7 +23,8 @@ namespace Pinetime {
                                  const Pinetime::Controllers::Battery& batteryController,
                                  const Pinetime::Controllers::Ble& bleController,
                                  Controllers::DateTime& dateTimeController,
-                                 Pinetime::Controllers::FS& filesystem);
+                                 Pinetime::Controllers::FS& filesystem,
+                                 const Controllers::TouchHandler& touchHandler);
         ~ApplicationList() override;
         bool OnTouchEvent(TouchEvents event) override;
 
@@ -36,6 +38,7 @@ namespace Pinetime {
         const Pinetime::Controllers::Ble& bleController;
         Controllers::DateTime& dateTimeController;
         Pinetime::Controllers::FS& filesystem;
+        const Controllers::TouchHandler& touchHandler;
 
         static constexpr int appsPerScreen = 6;
 
@@ -55,7 +58,7 @@ namespace Pinetime {
           {"2", Apps::Twos, true},
           {Symbols::drum, Apps::Metronome, true},
           {Symbols::map, Apps::Navigation, Applications::Screens::Navigation::IsAvailable(filesystem)},
-          {Symbols::none, Apps::None, false},
+          {Symbols::flashlight, Apps::FlashLight, false},
 
           // {"M", Apps::Motion},
         }};
