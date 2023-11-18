@@ -409,12 +409,8 @@ void DisplayApp::LoadScreen(Apps app, DisplayApp::FullRefreshDirections directio
 
   switch (app) {
     case Apps::Launcher:
-      currentScreen = std::make_unique<Screens::ApplicationList>(this,
-                                                                 settingsController,
-                                                                 batteryController,
-                                                                 bleController,
-                                                                 dateTimeController,
-                                                                 touchHandler);
+      currentScreen =
+        std::make_unique<Screens::ApplicationList>(this, settingsController, batteryController, bleController, dateTimeController, filesystem, touchHandler);
       break;
     case Apps::Motion:
       // currentScreen = std::make_unique<Screens::Motion>(motionController);

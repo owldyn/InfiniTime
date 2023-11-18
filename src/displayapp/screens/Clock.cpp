@@ -83,6 +83,7 @@ std::unique_ptr<Screen> Clock::WatchFaceDigitalScreen() {
                                                      settingsController,
                                                      heartRateController,
                                                      motionController,
+                                                     weatherService,
                                                      touchHandler);
 }
 
